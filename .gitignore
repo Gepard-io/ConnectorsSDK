@@ -1,0 +1,16 @@
+# phpstorm project files
+.idea
+
+# windows thumbnail cache
+Thumbs.db
+
+# Mac DS_Store Files
+.DS_Store
+
+# composer related
+vendor
+composer.lock
+
+# local phpunit config
+phpunit.xml
+.phpunit.result.cache
