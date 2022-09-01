@@ -1,4 +1,8 @@
 <?php
+/**
+ * @link https://gepard.io
+ * @copyright 2022 (c) Bintime
+ */
 
 declare(strict_types=1);
 
@@ -18,7 +22,7 @@ final class ImageItem
     public const TYPE_THUMB = 'thumb';
 
     /**
-     * List of available types
+     * List of available quality types
      */
     public const TYPES = [
         self::TYPE_HIGH,
@@ -28,11 +32,11 @@ final class ImageItem
     ];
 
     /**
-     * @param string   $type Type of image.
+     * @param string   $type Quality type of image. Look to TYPE_* constants.
      * @param string   $url Source URL of image.
      * @param int|null $width Image height in pixels.
      * @param int|null $height Image width in pixels.
-     * @param int|null $size Image size.
+     * @param int|null $size Image size in bytes.
      *
      * @throws InvalidArgumentException
      */

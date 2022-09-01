@@ -16,15 +16,18 @@ Example: upload products from Gepard SaaS Platform, convert them to save them in
 
 ## Getting started
 
-1. Create own connector definition class by extending `\GepardIO\ConnectorsSDK\Connector` class. If there are any
+1. Take a look to existing integration tests for examples how to use this library.
+
+2. Create own connector definition class by extending `\GepardIO\ConnectorsSDK\Connector` class. If there are any
    settings that your connector require for its work - they should be defined and returned in `getSettings()` method.
    Examples of such "global" settings: credentials to access some API, API hostname, etc.
 
-2. Create necessary query and/or command classes. Do not forget to add their class names to corresponding methods in
+3. Create necessary query and/or command classes. Do not forget to add their class names to corresponding methods in
    connector (`getQueries()` and `getCommands()`).
 
-3. Create GitHub repository with your integration and let us know that we can add new integration on our platform.
+4. Create GitHub repository with your integration and let us know that we can add new integration on our platform.
 
 ## Resources
 
 * [Issues](https://github.com/Gepard-io/ConnectorsSDK/issues) - Report issues, submit pull requests, and get involved.
+* [Changelog](./CHANGELOG.md) - List of changes.

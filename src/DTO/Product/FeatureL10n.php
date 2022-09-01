@@ -1,4 +1,8 @@
 <?php
+/**
+ * @link https://gepard.io
+ * @copyright 2022 (c) Bintime
+ */
 
 declare(strict_types=1);
 
@@ -18,16 +22,16 @@ final class FeatureL10n
     /**
      * @param string $locale Locale is a language in which the identifier is provided. Format: 'll-CC'.
      * @param string $name Localized name of the feature.
-     * @param string $value Localized value of the feature.
+     * @param array  $values Localized values of the feature.
      *
      * @throws InvalidArgumentException
      */
-    public function __construct(private string $locale, private string $name, private string $value)
+    public function __construct(private string $locale, private string $name, private array $values)
     {
         Assert::lazy()
             ->that($locale, 'locale')->notEmpty()
             ->that($name, 'name')->notEmpty()
-            ->that($value, 'value')->notEmpty()
+            ->that($values, 'values')->minCount(1)->uniqueValues()->all()->string()->notBlank()
             ->verifyNow();
     }
 
@@ -44,11 +48,11 @@ final class FeatureL10n
     /**
      * Get localized value.
      *
-     * @return string
+     * @return string[]
      */
-    public function getValue(): string
+    public function getValues(): array
     {
-        return $this->value;
+        return $this->values;
     }
 
     public function toArray(): array
@@ -56,7 +60,7 @@ final class FeatureL10n
         return [
             'locale' => $this->locale,
             'name' => $this->name,
-            'value' => $this->value,
+            'values' => $this->values,
         ];
     }
 }

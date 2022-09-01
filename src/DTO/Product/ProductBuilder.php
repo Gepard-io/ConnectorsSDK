@@ -1,4 +1,8 @@
 <?php
+/**
+ * @link https://gepard.io
+ * @copyright 2022 (c) Bintime
+ */
 
 declare(strict_types=1);
 
@@ -6,6 +10,7 @@ namespace GepardIO\ConnectorsSDK\DTO\Product;
 
 use Assert\Assertion;
 use Assert\AssertionFailedException;
+use DateTimeImmutable;
 use InvalidArgumentException;
 
 use function array_filter;
@@ -17,6 +22,9 @@ use function sprintf;
 final class ProductBuilder
 {
     use ProductTrait;
+
+    private ?DateTimeImmutable $productAdded = null;
+    private ?DateTimeImmutable $productUpdated = null;
 
     /**
      * @param Identifier $identifier A unique identifier of the product.
@@ -201,5 +209,46 @@ final class ProductBuilder
         }
 
         return $this;
+    }
+
+    public function setProductAdded(\DateTimeImmutable $date): self
+    {
+        $this->productAdded = $date;
+
+        return $this;
+    }
+
+    public function setProductUpdated(\DateTimeImmutable $date): self
+    {
+        $this->productUpdated = $date;
+
+        return $this;
+    }
+
+    public function setReleaseDate(\DateTimeImmutable $date): self
+    {
+        $this->releaseDate = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get the product added date.
+     *
+     * @return DateTimeImmutable|null
+     */
+    public function getProductAdded(): ?DateTimeImmutable
+    {
+        return $this->productAdded;
+    }
+
+    /**
+     * Get the product updated date.
+     *
+     * @return DateTimeImmutable|null
+     */
+    public function getProductUpdated(): ?DateTimeImmutable
+    {
+        return $this->productUpdated;
     }
 }

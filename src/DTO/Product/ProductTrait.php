@@ -1,8 +1,14 @@
 <?php
+/**
+ * @link https://gepard.io
+ * @copyright 2022 (c) Bintime
+ */
 
 declare(strict_types=1);
 
 namespace GepardIO\ConnectorsSDK\DTO\Product;
+
+use DateTimeImmutable;
 
 /**
  * Represents the product fields
@@ -20,6 +26,7 @@ trait ProductTrait
     private array $media = [];
     private array $features = [];
     private array $commerces = [];
+    private ?DateTimeImmutable $releaseDate = null;
 
     /**
      * Get the identifier.
@@ -64,7 +71,7 @@ trait ProductTrait
     /**
      * Get a list of descriptions.
      *
-     * @return array
+     * @return Description[]
      */
     public function getDescriptions(): array
     {
@@ -74,7 +81,7 @@ trait ProductTrait
     /**
      * Get a list of bullet points.
      *
-     * @return array
+     * @return BulletPoint[]
      */
     public function getBulletPoints(): array
     {
@@ -84,7 +91,7 @@ trait ProductTrait
     /**
      * Get a list of reasons to buy.
      *
-     * @return array
+     * @return ReasonToBuy[]
      */
     public function getReasonsToBuy(): array
     {
@@ -94,7 +101,7 @@ trait ProductTrait
     /**
      * Get a list of images.
      *
-     * @return array
+     * @return Image[]
      */
     public function getGallery(): array
     {
@@ -104,7 +111,7 @@ trait ProductTrait
     /**
      * Get a list of media.
      *
-     * @return array
+     * @return Media[]
      */
     public function getMedia(): array
     {
@@ -114,7 +121,7 @@ trait ProductTrait
     /**
      * Get a list of features.
      *
-     * @return array
+     * @return Feature[]
      */
     public function getFeatures(): array
     {
@@ -124,10 +131,20 @@ trait ProductTrait
     /**
      * Get a list of commerce info.
      *
-     * @return array
+     * @return Commerce[]
      */
     public function getCommerces(): array
     {
         return $this->commerces;
+    }
+
+    /**
+     * Get product release date.
+     *
+     * @return DateTimeImmutable|null
+     */
+    public function getReleaseDate(): ?DateTimeImmutable
+    {
+        return $this->releaseDate;
     }
 }

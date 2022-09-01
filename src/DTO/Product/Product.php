@@ -1,4 +1,8 @@
 <?php
+/**
+ * @link https://gepard.io
+ * @copyright 2022 (c) Bintime
+ */
 
 declare(strict_types=1);
 
@@ -13,9 +17,9 @@ final class Product
 {
     use ProductTrait;
 
-    private DateTimeImmutable $releaseDate;
     private DateTimeImmutable $productAdded;
     private DateTimeImmutable $productUpdated;
+
 
     /**
      * @param ProductBuilder $productBuilder
@@ -33,19 +37,9 @@ final class Product
         $this->media = $productBuilder->getMedia();
         $this->features = $productBuilder->getFeatures();
         $this->commerces = $productBuilder->getCommerces();
-        $this->releaseDate = new DateTimeImmutable();
-        $this->productAdded = new DateTimeImmutable();
-        $this->productUpdated = new DateTimeImmutable();
-    }
-
-    /**
-     * Get the product release date.
-     *
-     * @return DateTimeImmutable
-     */
-    public function getReleaseDate(): DateTimeImmutable
-    {
-        return $this->releaseDate;
+        $this->releaseDate = $productBuilder->getReleaseDate();
+        $this->productAdded = $productBuilder->getProductAdded() ?: new DateTimeImmutable();
+        $this->productUpdated = $productBuilder->getProductUpdated() ?: new DateTimeImmutable();
     }
 
     /**

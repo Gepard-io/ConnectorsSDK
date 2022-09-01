@@ -11,6 +11,9 @@ Thumbs.db
 vendor
 composer.lock
 
-# local phpunit config
+# local phpunit config and result cache
 phpunit.xml
 .phpunit.result.cache
+
+# integration tests environment vars file
+.env
